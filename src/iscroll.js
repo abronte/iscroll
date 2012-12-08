@@ -104,7 +104,9 @@
 			useTransition: true,
 			momentum: true,
 
-			scrollbars: true
+			scrollbars: true,
+
+      maxSpeed: 1.5
 		};
 
 		for (i in options) this.options[i] = options[i];
@@ -335,6 +337,10 @@
 				destination,
 				duration,
 				deceleration = 0.0009;
+
+      if(speed > this.options.max_speed) {
+        speed = this.options.max_speed;
+      }
 
 			destination = current + ( speed * speed ) / ( 2 * deceleration ) * ( distance < 0 ? -1 : 1 );
 			duration = speed / deceleration;
